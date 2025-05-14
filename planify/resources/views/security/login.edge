@@ -5,22 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <form action="" method="POST">
+<body class="bg-[#FFEBC6] flex items-center md:justify-center md:w-full h-screen p-4">
 
-        <fieldset disabled="disabled">
-            <input type="text" name="fullName" id="" placeholder="full name" required>
-        </fieldset>
+   <section class="bg-white space-y-10 border p-4 rounded-lg w-full md:w-100 shadow-lg">
+        <h1 class="text-3xl text-gray-600 font-bold capitalize text-center">
+            S'inscrire
+        </h1>
+        <form action="/tologin" method="POST" class="space-y-6">
+            {{ csrfField() }}
+            <fieldset>
+                <input  <input class="border border-orange-400 px-4 py-2 rounded-lg w-full" type="email" name="email" id="" placeholder="tshims@gmail.com" required>
+            </fieldset>
 
-        <fieldset disabled="disabled">
-            <input type="email" name="email" id="" placeholder="tshims@gmail.com" required>
-        </fieldset>
-        <fieldset disabled="disabled">
-            <button type="submit">login</button>
-        </fieldset>
+            <fieldset>
+                <input  <input class="border border-orange-400 px-4 py-2 rounded-lg w-full" type="password" name="password" id="" placeholder="***************" required>
+            </fieldset>
+            <fieldset class="flex justify-center items-center">
+                <button class="bg-orange-400 px-6 py-2 text-white text-center rounded-lg" type="submit">login</button>
+            </fieldset>
 
+        </form>
 
-    </form>
+        <p>
+            <a href="/signup" class="underline">Vous n'avez pas un compte ?</a>
+        </p>
+   </section>
 </body>
 </html>

@@ -13,8 +13,8 @@
         <h1 class="text-3xl text-gray-600 font-bold capitalize text-center">
             S'inscrire
         </h1>
-        <form action="" method="POST" class="space-y-6">
-
+        <form action="/toSignUp" method="POST" class="space-y-6">
+            {{ csrfField() }}
             <fieldset class="">
                 <input class="border border-orange-400 px-4 py-2 rounded-lg w-full" type="text" name="fullName" id="" placeholder="full name" required>
             </fieldset>
@@ -33,6 +33,10 @@
 
 
         </form>
+
+        <p>
+            <a href="/login" class="underline">Vous avez deja un compte ?</a>
+        </p>
     </section>
 </body>
 </html>
