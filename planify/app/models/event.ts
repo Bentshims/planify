@@ -5,6 +5,9 @@ export default class Event extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
 
+  @column()
+  declare userId:number
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
