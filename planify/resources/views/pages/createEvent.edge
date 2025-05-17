@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      AdonisJS - A fully featured web framework for Node.js
+    </title>
+
+    <link rel="preconnect" href="https://fonts.bunny.net" />
+    <link
+      href="https://fonts.bunny.net/css?family=instrument-sans:400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --sand-1: #fdfdfc;
+        --sand-2: #f9f9f8;
+        --sand-3: #f1f0ef;
+        --sand-4: #e9e8e6;
+        --sand-5: #e2e1de;
+        --sand-6: #dad9d6;
+        --sand-7: #cfceca;
+        --sand-8: #bcbbb5;
+        --sand-9: #8d8d86;
+        --sand-10: #82827c;
+        --sand-11: #63635e;
+        --sand-12: #21201c;
+      }
+    </style>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: [ "Instrument Sans", "sans-serif" ]
+            },
+            colors: {
+              primary: {
+                DEFAULT: "#5A45FF",
+                lighter: "#a599ff"
+              },
+              sand: {
+                1: "var(--sand-1)",
+                2: "var(--sand-2)",
+                3: "var(--sand-3)",
+                4: "var(--sand-4)",
+                5: "var(--sand-5)",
+                6: "var(--sand-6)",
+                7: "var(--sand-7)",
+                8: "var(--sand-8)",
+                9: "var(--sand-9)",
+                10: "var(--sand-10)",
+                11: "var(--sand-11)",
+                12: "var(--sand-12)"
+              }
+            }
+          }
+        }
+      };
+    </script>
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @stack('dumper')
+    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+    <script defer src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+      {{--  Plugin d'aperçu d’image  --}}
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet" />
+    <script defer src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+  </head>
+  <body class="min-h-screen w-screen font-sans bg-black text-white">
+    <header>
+
+    </header>
+    <main class="">
+        <section class="hero-section bg-[url('/uploads/image.png')] my-20 bg-center bg-cover min-h-80 mx-2 rounded-xl px-4 py-8 text-2xl font-bold">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat quisquam labore consequatur veniam, debitis iusto amet voluptatibus
+        </section>
+        <section class="mx-2 my-10 space-y-8">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque, voluptatum.
+            </p>
+            <form action="/events" method="POST" class="space-y-6 mb-4" enctype="multipart/form-data">
+                {{ csrfField() }}
+                <fieldset>
+                    <input type="file" name="image" id="image" required class="text-gray-800 bg-gray-800 rounded-sm px-2 py-4 mr-10 file:bg-gray-800 file:text-gray-500 file:border-none">
+                </fieldset>
+                <fieldset class="class="flex flex-col space-y-2">
+                    <label for="category">category</label>
+                    <div>
+                        <select name="category" id="category" class="text-gray-500 bg-gray-800 rounded-sm px-2 py-4 border-b" required>
+                            <option value="santes">santes</option>
+                            <option value="educations">Educations</option>
+                            <option value="religions/croyances">Religions/Croyances</option>
+                            <option value="sports">Sports</option>
+                            <option value="comedies">comedies</option>
+                            <option value="musiques">musiques</option>
+                            <option value="fetes">fetes</option>
+                            <option value="conferences">conferences</option>
+                            <option value="croisades">croisades</option>
+                        </select>
+                    </div>
+                </fieldset>
+                <fieldset class="flex flex-col space-y-2">
+                    <label for="eventTitle">Event title</label>
+                    <input type="text" id="eventTitle" name="eventTitle" placeholder="my party" minlength="3" class="text-gray-500 bg-gray-800 rounded-sm px-2 py-4 border-b" required>
+                </fieldset>
+                <fieldset class="flex flex-col space-y-2">
+                    <label for="description">description</label>
+                    <textarea type="text" name="description" id="description" class="text-gray-500 bg-gray-800 rounded-sm px-2 py-4 border-b" placeholder="your event description" minlength="10" maxlength="255" required></textarea>
+                </fieldset>
+                <fieldset class="flex flex-col space-y-2">
+                    <label for="beginHour">begin hour</label>
+                    <input type="time" id="beginHour" name="beginHour" placeholder="00h 00'" class="text-gray-500 bg-gray-800 rounded-sm px-2 py-4 border-b" required>
+                </fieldset>
+                <fieldset class="flex flex-col space-y-2">
+                    <label for="endHour">end hour</label>
+                    <input type="time" id="endHour" name="endHour" placeholder="1h 00'" class="text-gray-500 bg-gray-800 rounded-sm px-2 py-4 border-b" required>
+                </fieldset>
+                <fieldset class="flex flex-col space-y-2">
+                    <label for="beginDate">begin date</label>
+                    <input type="date" name="beginDate" id="beginDate" class="text-gray-500 bg-gray-800 rounded-sm px-2 py-4 border-b" required>
+                </fieldset>
+                <fieldset class="flex flex-col space-y-2">
+                    <label for="endDate">end date</label>
+                    <input type="date" name="endDate" id="endDate" class="text-gray-500 bg-gray-800 rounded-sm px-2 py-4 border-b" required>
+                </fieldset>
+                <fieldset class="flex flex-col space-y-2">
+                    <label for="location">location</label>
+                    <input type="text" name="location" id="location" placeholder="RDC, Lubumbashi" class="text-gray-200 bg-gray-800 rounded-sm px-2 py-4 border-b" required>
+                </fieldset>
+
+                <button type="submit" class="px-4 py-2 bg-red-500 rounded-sm">create event</button>
+            </form>
+        </section>
+        <script>
+            window.addEventListener('DOMContentLoaded',()=>{
+              FilePond.registerPlugin(FilePondPluginImagePreview)
+
+              const image = document.querySelector('#image')
+              FilePond.create(image,{instantUpload:false,  storeAsFile:true})
+            })
+      </script>
+    </main>
+    <footer>
+    </footer>
+  </body>
+</html>

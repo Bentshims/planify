@@ -25,10 +25,10 @@ export default class UsersController {
     }
 
     public async login({view,request,auth}:HttpContext){
-        const datas = await request.validateUsing(loginUserValidator)
+        const {email, password} = await request.validateUsing(loginUserValidator)
 
         // verifier les donnees
-        const user = await User.verifyCredentials(datas.email,datas.password)
+        const user = await User.verifyCredentials(email, password)
 
         // connecter le user
         await auth.use('web').login(user)
